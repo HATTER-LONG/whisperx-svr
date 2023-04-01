@@ -1,0 +1,2 @@
+# whisperx-svr
+whisper docker
