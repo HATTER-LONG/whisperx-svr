@@ -21,7 +21,7 @@ RUN python3 -m venv $POETRY_VENV \
     && $POETRY_VENV/bin/pip install --upgrade pip setuptools \
     && $POETRY_VENV/bin/pip install gunicorn \
     && $POETRY_VENV/bin/pip install "fastapi[all]" \
-    && $POETRY_VENV/bin/pip install git+https://github.com/m-bain/whisperx.git 
+    && $POETRY_VENV/bin/pip install git+https://github.com/m-bain/whisperx.git@33dd3b9bcddb23e6f7d92b6fd61d342e5f63d7a1 
 # pip install faster-whisper
 ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
