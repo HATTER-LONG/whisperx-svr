@@ -3,8 +3,9 @@ from fastapi import FastAPI, File, UploadFile, Query
 from fastapi.responses import StreamingResponse, RedirectResponse
 import whisperx
 import os
+import whisper
+from whisper import tokenizer
 from whisperx.utils import write_txt, write_ass, write_vtt, write_tsv, write_srt
-from whisperx import tokenizer
 import ffmpeg
 from typing import BinaryIO, Union
 import numpy as np
@@ -18,9 +19,9 @@ DEVICE = "cpu"
 if torch.cuda.is_available():
     DEVICE = "cuda"
     print("using CUDA")
-    model = whisperx.load_model(model_name, device="cuda")
+    model = whisper.load_model(model_name, device="cuda")
 else:
-    model = whisperx.load_model(model_name, compute_type="int8")
+    model = whisper.load_model(model_name, compute_type="int8")
 model_lock = Lock()
 
 
