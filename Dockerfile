@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.0-base-ubuntu22.04
+FROM nvidia/cuda:12.1.1-base-ubuntu22.04
 
 ENV PYTHON_VERSION=3.10
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -26,3 +26,4 @@ WORKDIR /app
 COPY . /app
 
 ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8888", "--workers", "1", "--timeout", "0", "whisperx-app:app", "-k", "uvicorn.workers.UvicornWorker"]
+# gunicorn --bind 0.0.0.0:8000 --workers 1 --timeout 0 whisperx-app:app -k uvicorn.workers.UvicornWorker
